@@ -8,9 +8,10 @@ using Azureoth.Database;
 namespace Azureoth.Database.Migrations
 {
     [DbContext(typeof(AzureothDbContext))]
-    partial class AzureothDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161230185647_AddingNameToUsers")]
+    partial class AddingNameToUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")

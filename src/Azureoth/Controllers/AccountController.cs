@@ -6,13 +6,18 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Azureoth.Database;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Azureoth.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
+        public AccountController(AzureothDbContext context) : base(context)
+        {
+        }
+
         [HttpGet]
         public async Task Login()
         {

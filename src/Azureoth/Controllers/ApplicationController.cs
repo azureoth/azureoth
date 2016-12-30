@@ -5,10 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Azureoth.Datastructures;
 using Azureoth.Management;
+using Azureoth.Database;
+
 namespace Azureoth.Controllers
 {
-    public class ApplicationController : Controller
+    public class ApplicationController : BaseController
     {
+        public ApplicationController(AzureothDbContext context) : base(context)
+        {
+        }
+
         [Route("apps")]
         [HttpGet]
         public ActionResult GetApps()

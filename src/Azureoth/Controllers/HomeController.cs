@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Azureoth.Database;
 
 namespace Azureoth.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        public HomeController(AzureothDbContext context) : base(context)
+        {
+        }
+
         public IActionResult Index()
         {
             return View();

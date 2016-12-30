@@ -5,11 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Azureoth.Management;
 using Azureoth.Datastructures;
+using Azureoth.Database;
 
 namespace Azureoth.Controllers
 {
-    public class SchemaController : Controller
+    public class SchemaController : BaseController
     {
+        public SchemaController(AzureothDbContext context) : base(context)
+        {
+        }
+
         [Route("apps/{appId}/schema")]
         [HttpGet]
         public ActionResult GetSchema(string appId)

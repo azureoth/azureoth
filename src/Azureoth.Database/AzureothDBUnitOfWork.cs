@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Azureoth.Database
 {
-    public class AzureothDBUnitOfWork : IDisposable
+    public class AzureothDbUnitOfWork : IDisposable
     {
         private readonly AzureothDbContext _context;
 
-        public AzureothDBUnitOfWork(AzureothDbContext context)
+        public AzureothDbUnitOfWork(AzureothDbContext context)
         {
             _context = context;
         }
