@@ -7,6 +7,7 @@ using Azureoth.Database;
 using Newtonsoft.Json;
 using Azureoth.Modules.SQLdb.Datastructures.Schema;
 using Azureoth.Database.Models;
+using Azureoth.Modules.SQLdb;
 
 namespace Azureoth.Management
 {
@@ -34,6 +35,11 @@ namespace Azureoth.Management
         public static bool AddSchema(string userName, string appId, Dictionary<string, JsonTable> schema)
         {
             ParamValidators.ValidateAppId(appId);
+
+            SchemaBuilderFactory factory = new SchemaBuilderFactory();
+            var databaseConnectionString = "Data Source=(localdb)\\Azureoth;Initial Catalog=Azureoth;Integrated Security=False;MultipleActiveResultSets=True;App=EntityFramework";
+            var schemaBuilder = factory.CreateSchemaBuilder(databaseConnectionString, databaseConnectionString, "D:/Logs/");
+            schemaBuilder.CreateSchema(schema, appId).GetAwaiter().GetResult();
 
             Guid toAdd = Guid.NewGuid();
             using (var db = new AzureothDbUnitOfWork(_context))

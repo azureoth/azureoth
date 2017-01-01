@@ -11070,6 +11070,7 @@
       "Microsoft.NETCore.App >= 1.0.1",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0",
       "Newtonsoft.Json >= 9.0.2-beta1",
+      "SQLDatastructures >= 1.0.0",
       "SQLdb >= 1.0.0"
     ],
     ".NETCoreApp,Version=v1.0": []

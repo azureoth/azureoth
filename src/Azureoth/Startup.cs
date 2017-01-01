@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authentication;
 using Azureoth.Database;
+using Azureoth.RestfulDb;
 
 namespace Azureoth
 {
@@ -35,6 +36,13 @@ namespace Azureoth
         {
             var databaseConnectionString = Configuration.GetConnectionString("DatabaseConnectionString");
             services.AddDbContext<AzureothDbContext>(options => options.UseSqlServer(databaseConnectionString));
+
+            services.ConfigureRestfulDb(
+                connectionString: databaseConnectionString,   // Database connection string
+                apiPrefix: "/api/apps");                    // API path that the db will be exposed under
+
+            services.AddMvc();
+
             // Add framework services.
             services.AddMvc();
 
@@ -79,6 +87,8 @@ namespace Azureoth
                     OnRemoteFailure = OnAuthenticationFailed,
                 }
             });
+
+            app.UseRestfulDb();
 
             app.UseMvc(routes =>
             {

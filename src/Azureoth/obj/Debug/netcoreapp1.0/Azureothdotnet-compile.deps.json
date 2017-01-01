@@ -39,7 +39,8 @@
           "Azureoth.Database": "1.0.0",
           "Newtonsoft.Json": "9.0.2-beta1",
           "Azureoth.RestfulDb": "1.0.0",
-          "SQLdb": "1.0.0"
+          "SQLdb": "1.0.0",
+          "SQLDatastructures": "1.0.0"
         },
         "compile": {
           "Azureoth.dll": {}
@@ -2920,7 +2921,8 @@
           "Azureoth.Database": "1.0.0",
           "Newtonsoft.Json": "9.0.2-beta1",
           "Azureoth.RestfulDb": "1.0.0",
-          "SQLdb": "1.0.0"
+          "SQLdb": "1.0.0",
+          "SQLDatastructures": "1.0.0"
         },
         "runtime": {
           "Azureoth.dll": {}
