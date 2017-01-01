@@ -3,6 +3,22 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.0": {
+      "Azureoth.RestfulDb/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Data.SqlClient": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/Azureoth.RestfulDb.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Azureoth.RestfulDb.dll": {}
+        }
+      },
       "Libuv/1.9.0": {
         "type": "package",
         "dependencies": {
@@ -1782,7 +1798,7 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/9.0.1": {
+      "Newtonsoft.Json/9.0.2-beta1": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1",
@@ -1799,6 +1815,7 @@
           "System.Resources.ResourceManager": "4.0.1",
           "System.Runtime": "4.1.0",
           "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Numerics": "4.0.1",
           "System.Runtime.Serialization.Primitives": "4.1.1",
           "System.Text.Encoding": "4.0.11",
           "System.Text.Encoding.Extensions": "4.0.11",
@@ -1809,10 +1826,10 @@
           "System.Xml.XDocument": "4.0.11"
         },
         "compile": {
-          "lib/netstandard1.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard1.1/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard1.1/Newtonsoft.Json.dll": {}
         }
       },
       "NuGet.Common/3.5.0-beta2-1484": {
@@ -2251,6 +2268,34 @@
             "assetType": "native",
             "rid": "win7-x86"
           }
+        }
+      },
+      "SQLDatastructures/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.Data.SqlClient": "4.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/SQLDatastructures.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/SQLDatastructures.dll": {}
+        }
+      },
+      "SQLdb/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "SQLDatastructures": "1.0.0",
+          "System.Diagnostics.Process": "4.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/SQLdb.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/SQLdb.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -4312,6 +4357,16 @@
     }
   },
   "libraries": {
+    "Azureoth.RestfulDb/1.0.0": {
+      "sha512": "A9zQtq3qzDclCA8AWiJXudx5601IqzGGGWl8ONEa59uJ97WdyjSqkmG86YTA9JSKzrYNjiSAN5OF1YBc4MEGUQ==",
+      "type": "package",
+      "path": "Azureoth.RestfulDb/1.0.0",
+      "files": [
+        "Azureoth.RestfulDb.1.0.0.nupkg.sha512",
+        "Azureoth.RestfulDb.nuspec",
+        "lib/netstandard1.6/Azureoth.RestfulDb.dll"
+      ]
+    },
     "Libuv/1.9.0": {
       "sha512": "9Q7AaqtQhS8JDSIvRBt6ODSLWDBI4c8YxNxyCQemWebBFUtBbc6M5Vi5Gz1ZyIUlTW3rZK9bIr5gnVyv0z7a2Q==",
       "type": "package",
@@ -5783,12 +5838,12 @@
         "dotnet_library_license.txt"
       ]
     },
-    "Newtonsoft.Json/9.0.1": {
-      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
+    "Newtonsoft.Json/9.0.2-beta1": {
+      "sha512": "bq5DjCtCJpy9R5rsEeQlKz8qGF1Bh3wGaJKMlRwmCoKZ8WUCIFtU3JlyMOdAkSn66KCehCCAxMZFOQD4nNnH/w==",
       "type": "package",
-      "path": "Newtonsoft.Json/9.0.1",
+      "path": "Newtonsoft.Json/9.0.2-beta1",
       "files": [
-        "Newtonsoft.Json.9.0.1.nupkg.sha512",
+        "Newtonsoft.Json.9.0.2-beta1.nupkg.sha512",
         "Newtonsoft.Json.nuspec",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
@@ -5800,6 +5855,8 @@
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.1/Newtonsoft.Json.dll",
+        "lib/netstandard1.1/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
@@ -6249,6 +6306,26 @@
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.4.3.0.nupkg.sha512",
         "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni.nuspec",
         "runtimes/win7-x86/native/sni.dll"
+      ]
+    },
+    "SQLDatastructures/1.0.0": {
+      "sha512": "C/dXSRzopPpZoRqA8JVtyJtKbfCISmMmMgtOiC6czkZx8aHiy7HRMSEjPWvxW9zqIdX0STTE9VsiTducZCRkww==",
+      "type": "package",
+      "path": "SQLDatastructures/1.0.0",
+      "files": [
+        "SQLDatastructures.1.0.0.nupkg.sha512",
+        "SQLDatastructures.nuspec",
+        "lib/netstandard1.6/SQLDatastructures.dll"
+      ]
+    },
+    "SQLdb/1.0.0": {
+      "sha512": "0m0Beb5bB/W/YRXhOlTIVEPmZL8zqKoXiDMxskwI7IThRvft2ri8WYizY5FPY/5hIkRIR89hJeP59tyxTDLsnw==",
+      "type": "package",
+      "path": "SQLdb/1.0.0",
+      "files": [
+        "SQLdb.1.0.0.nupkg.sha512",
+        "SQLdb.nuspec",
+        "lib/netstandard1.6/SQLdb.dll"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -10970,6 +11047,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Azureoth.Database >= 1.0.0-*",
+      "Azureoth.RestfulDb >= 1.0.0",
       "Microsoft.AspNetCore.Authentication >= 1.1.0",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.1.0",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 1.1.0",
@@ -10990,7 +11068,9 @@
       "Microsoft.Extensions.Logging.Debug >= 1.0.0",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.1",
-      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0"
+      "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0",
+      "Newtonsoft.Json >= 9.0.2-beta1",
+      "SQLdb >= 1.0.0"
     ],
     ".NETCoreApp,Version=v1.0": []
   },

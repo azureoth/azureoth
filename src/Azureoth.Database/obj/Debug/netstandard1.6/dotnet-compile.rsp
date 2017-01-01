@@ -81,15 +81,14 @@
 --reference:C:\Users\v-youel\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\AzureothDbContext.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\AzureothDBUnitOfWork.cs
-C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Datastructures\JsonIndex.cs
-C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Datastructures\JsonTable.cs
-C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Datastructures\JsonTableMeta.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Migrations\20161229124219_InitialMigration.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Migrations\20161229124219_InitialMigration.Designer.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Migrations\20161230185647_AddingNameToUsers.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Migrations\20161230185647_AddingNameToUsers.Designer.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Migrations\20170101172830_addingTables.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Migrations\20170101172830_addingTables.Designer.cs
+C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Migrations\20170101181137_addingColumns.cs
+C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Migrations\20170101181137_addingColumns.Designer.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Migrations\AzureothDbContextModelSnapshot.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Models\Application.cs
 C:\Users\v-youel\Documents\Azureoth\src\Azureoth.Database\Models\IEntity.cs

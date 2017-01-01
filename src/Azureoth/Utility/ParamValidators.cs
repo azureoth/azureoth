@@ -32,7 +32,7 @@ namespace Azureoth.Utility
             if (App == null)
                 throw new ArgumentException("Invalid App");
 
-            ValidateAppId(App.Id);
+            //ValidateAppId(App.Id);
             ValidateAppTitle(App.Title);
         }
     }

@@ -13,5 +13,17 @@ namespace Azureoth.Database.Repositories
         public SchemasRepository(AzureothDbContext context) : base(context)
         {
         }
+
+        public Schema GetAppSchema(Guid appId)
+        {
+            var maxValue = GetAll(s => s.ApplicationId == appId).Max(x => x.Version);
+            return GetAll(s=> s.ApplicationId == appId).First(a => a.Version == maxValue);
+        }
+
+        public int GetNextSchemaVersionNumber(Guid appId)
+        {
+            var maxValue = GetAll(s => s.ApplicationId == appId).Max(x => x.Version);
+            return maxValue + 1;
+        }
     }
 }

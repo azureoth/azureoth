@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Azureoth.Management;
-using Azureoth.Datastructures;
+using Azureoth.Modules.SQLdb.Datastructures.Schema;
 using Azureoth.Database;
 
 namespace Azureoth.Controllers

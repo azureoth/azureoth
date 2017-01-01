@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Azureoth.Utility;
 using Azureoth.Database;
 using Azureoth.Database.Models;
-
 namespace Azureoth.Management
 {
     public static class ApplicationManager
@@ -20,36 +19,66 @@ namespace Azureoth.Management
         {
             using (var db = new AzureothDbUnitOfWork(_context))
             {
-                db.ApplicationsRepository.GetUserApps(userName);
-                db.Save();
+                var apps = db.ApplicationsRepository.GetUserApps(userName);
+
+                List<UserApplication> ret = new List<UserApplication>();
+
+                foreach (var app in apps)
+                {
+                    ret.Add(new UserApplication() {
+                        Title = app.Title,
+                        Description = app.Description,
+                        Id = app.Id.ToString()
+                    });
+                }
+
+                return ret;
             }
-            return new List<UserApplication>();
         }
 
         public static UserApplication GetUserApp(string userName, string appId)
         {
             ParamValidators.ValidateAppId(appId);
+            using (var db = new AzureothDbUnitOfWork(_context))
+            {
+                var apps = db.ApplicationsRepository.GetAll(a=> a.Id == Guid.Parse(appId));
 
-            return new UserApplication();
+                List<UserApplication> ret = new List<UserApplication>();
+
+                foreach (var app in apps)
+                {
+                    ret.Add(new UserApplication()
+                    {
+                        Title = app.Title,
+                        Description = app.Description,
+                        Id = app.Id.ToString()
+                    });
+                }
+
+                return ret.First();
+            }
         }
 
-        public static bool AddUserApp(string userName, UserApplication application)
+        public static Guid AddUserApp(string userName, UserApplication application)
         {
             ParamValidators.ValidateApp(application);
-
+            Guid toAdd = Guid.NewGuid();
             using (var db = new AzureothDbUnitOfWork(_context))
             {
                 Application newApp = new Application();
-                newApp.Id = Guid.NewGuid();
+                newApp.Id = toAdd;
                 newApp.OwnerName = userName;
+                newApp.Title = application.Title;
+                newApp.Description = application.Description;
                 db.ApplicationsRepository.Create(newApp);
                 db.Save();
             }
 
-            return true;
+            return toAdd;
         }
         public static bool EditUserApp(string userName, UserApplication application)
         {
+            throw new NotImplementedException();
             ParamValidators.ValidateApp(application);
 
             return true;

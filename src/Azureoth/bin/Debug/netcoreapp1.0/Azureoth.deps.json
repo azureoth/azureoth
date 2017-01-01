@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0",
-    "signature": "1619b9beb002108614b4d180b38f74f9f7701433"
+    "signature": "7cc6c606335b80bf5a4101ab51ee519fa8d5ce44"
   },
   "compilationOptions": {
     "defines": [
@@ -36,13 +36,31 @@
           "Microsoft.EntityFrameworkCore": "1.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
           "Microsoft.EntityFrameworkCore.Tools": "1.1.0-preview4-final",
-          "Azureoth.Database": "1.0.0"
+          "Azureoth.Database": "1.0.0",
+          "Newtonsoft.Json": "9.0.2-beta1",
+          "Azureoth.RestfulDb": "1.0.0",
+          "SQLdb": "1.0.0"
         },
         "runtime": {
           "Azureoth.dll": {}
         },
         "compile": {
           "Azureoth.dll": {}
+        }
+      },
+      "Azureoth.RestfulDb/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.1.0",
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
+          "System.Data.SqlClient": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/Azureoth.RestfulDb.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/Azureoth.RestfulDb.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/1.0.1": {
@@ -355,7 +373,7 @@
       "Microsoft.AspNetCore.JsonPatch/1.0.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.3.0",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "System.Collections.Concurrent": "4.3.0",
           "System.ComponentModel.TypeConverter": "4.1.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -564,7 +582,7 @@
           "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.1",
           "Microsoft.AspNetCore.Mvc.Formatters.Json": "1.0.1",
           "Microsoft.Extensions.WebEncoders": "1.1.0",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "System.Buffers": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         },
@@ -619,7 +637,7 @@
           "Microsoft.Extensions.CommandLineUtils": "1.0.0",
           "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
           "Microsoft.NETCore.App": "1.0.1",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "System.Diagnostics.Process": "4.1.0",
           "System.Runtime.Serialization.Primitives": "4.1.1"
         },
@@ -803,7 +821,7 @@
         "dependencies": {
           "Microsoft.CSharp": "4.3.0",
           "Microsoft.Extensions.DependencyModel": "1.0.0",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "NuGet.Packaging": "3.5.0-beta2-1484",
           "NuGet.RuntimeModel": "3.5.0-beta2-1484",
           "System.Dynamic.Runtime": "4.3.0",
@@ -1023,7 +1041,7 @@
         "dependencies": {
           "Microsoft.Extensions.Configuration": "1.0.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "System.Dynamic.Runtime": "4.3.0",
           "System.IO.FileSystem": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.1.1"
@@ -1062,7 +1080,7 @@
       "Microsoft.Extensions.DependencyModel/1.0.0": {
         "dependencies": {
           "Microsoft.DotNet.InternalAbstractions": "1.0.0",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Linq": "4.3.0"
@@ -1346,7 +1364,7 @@
       "Microsoft.IdentityModel.Tokens/5.1.0": {
         "dependencies": {
           "Microsoft.IdentityModel.Logging": "1.1.0",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -1486,7 +1504,7 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/9.0.1": {
+      "Newtonsoft.Json/9.0.2-beta1": {
         "dependencies": {
           "Microsoft.CSharp": "4.3.0",
           "System.Collections": "4.3.0",
@@ -1502,6 +1520,7 @@
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Numerics": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.1.1",
           "System.Text.Encoding": "4.3.0",
           "System.Text.Encoding.Extensions": "4.3.0",
@@ -1512,10 +1531,10 @@
           "System.Xml.XDocument": "4.3.0"
         },
         "runtime": {
-          "lib/netstandard1.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard1.1/Newtonsoft.Json.dll": {}
         },
         "compile": {
-          "lib/netstandard1.0/Newtonsoft.Json.dll": {}
+          "lib/netstandard1.1/Newtonsoft.Json.dll": {}
         }
       },
       "NuGet.Common/3.5.0-beta2-1484": {
@@ -1629,7 +1648,7 @@
       "NuGet.ProjectModel/3.5.0-beta2-1484": {
         "dependencies": {
           "NETStandard.Library": "1.6.1",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "NuGet.DependencyResolver.Core": "3.5.0-beta2-1484",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Threading.Thread": "4.3.0"
@@ -1659,7 +1678,7 @@
       "NuGet.Protocol.Core.v3/3.5.0-beta2-1484": {
         "dependencies": {
           "NETStandard.Library": "1.6.1",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "NuGet.Common": "3.5.0-beta2-1484",
           "NuGet.Packaging": "3.5.0-beta2-1484",
           "NuGet.Protocol.Core.Types": "3.5.0-beta2-1484",
@@ -1687,7 +1706,7 @@
       "NuGet.RuntimeModel/3.5.0-beta2-1484": {
         "dependencies": {
           "NETStandard.Library": "1.6.1",
-          "Newtonsoft.Json": "9.0.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
           "NuGet.Frameworks": "3.5.0-beta2-1484",
           "NuGet.Versioning": "3.5.0-beta2-1484",
           "System.Dynamic.Runtime": "4.3.0",
@@ -1883,6 +1902,32 @@
             "rid": "win7-x86",
             "assetType": "native"
           }
+        }
+      },
+      "SQLDatastructures/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.Data.SqlClient": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/SQLDatastructures.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/SQLDatastructures.dll": {}
+        }
+      },
+      "SQLdb/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.2-beta1",
+          "SQLDatastructures": "1.0.0",
+          "System.Diagnostics.Process": "4.1.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/SQLdb.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/SQLdb.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -3839,6 +3884,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Azureoth.RestfulDb/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A9zQtq3qzDclCA8AWiJXudx5601IqzGGGWl8ONEa59uJ97WdyjSqkmG86YTA9JSKzrYNjiSAN5OF1YBc4MEGUQ=="
+    },
     "Microsoft.AspNetCore.Antiforgery/1.0.1": {
       "type": "package",
       "serviceable": true,
@@ -4309,10 +4359,10 @@
       "serviceable": true,
       "sha512": "sha512-WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A=="
     },
-    "Newtonsoft.Json/9.0.1": {
+    "Newtonsoft.Json/9.0.2-beta1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw=="
+      "sha512": "sha512-bq5DjCtCJpy9R5rsEeQlKz8qGF1Bh3wGaJKMlRwmCoKZ8WUCIFtU3JlyMOdAkSn66KCehCCAxMZFOQD4nNnH/w=="
     },
     "NuGet.Common/3.5.0-beta2-1484": {
       "type": "package",
@@ -4488,6 +4538,16 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-4cXRTIcttvIreAoqK/5hzTtzepeggac+m5A0rzH+9zLtnFh2J0rLuGeJR4KjNLyKqPzO0kjqrs5lkRJEKX8HAA=="
+    },
+    "SQLDatastructures/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C/dXSRzopPpZoRqA8JVtyJtKbfCISmMmMgtOiC6czkZx8aHiy7HRMSEjPWvxW9zqIdX0STTE9VsiTducZCRkww=="
+    },
+    "SQLdb/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0m0Beb5bB/W/YRXhOlTIVEPmZL8zqKoXiDMxskwI7IThRvft2ri8WYizY5FPY/5hIkRIR89hJeP59tyxTDLsnw=="
     },
     "System.AppContext/4.3.0": {
       "type": "package",
