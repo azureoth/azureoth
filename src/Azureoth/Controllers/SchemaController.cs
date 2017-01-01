@@ -13,6 +13,7 @@ namespace Azureoth.Controllers
     {
         public SchemaController(AzureothDbContext context) : base(context)
         {
+            SchemaManager.SetContext(context);
         }
 
         [Route("apps/{appId}/schema")]

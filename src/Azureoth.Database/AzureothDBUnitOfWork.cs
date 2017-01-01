@@ -17,6 +17,8 @@ namespace Azureoth.Database
 
         #region Private Members
         private UsersRepository usersRepository;
+        private ApplicationsRepository applicationsRepository;
+        private SchemasRepository schemasRepository;
         #endregion Private Members
 
         #region Public Members
@@ -29,6 +31,30 @@ namespace Azureoth.Database
                     this.usersRepository = new UsersRepository(_context);
                 }
                 return this.usersRepository;
+            }
+        }
+
+        public ApplicationsRepository ApplicationsRepository
+        {
+            get
+            {
+                if (this.applicationsRepository == null)
+                {
+                    this.applicationsRepository = new ApplicationsRepository(_context);
+                }
+                return this.applicationsRepository;
+            }
+        }
+
+        public SchemasRepository SchemasRepository
+        {
+            get
+            {
+                if (this.schemasRepository == null)
+                {
+                    this.schemasRepository = new SchemasRepository(_context);
+                }
+                return this.schemasRepository;
             }
         }
         #endregion Public Members

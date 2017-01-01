@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Azureoth.Datastructures;
 using Azureoth.Management;
 using Azureoth.Database;
-
 namespace Azureoth.Controllers
 {
     public class ApplicationController : BaseController
     {
         public ApplicationController(AzureothDbContext context) : base(context)
         {
+            ApplicationManager.SetContext(context);
         }
 
         [Route("apps")]

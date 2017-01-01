@@ -13,6 +13,8 @@ namespace Azureoth.Database
 
         #region Database Sets
         public DbSet<User> Users { get; set; }
+        public DbSet<Application> Applications { get; set; }
+        public DbSet<Schema> Schemas { get; set; }
         #endregion Database Sets
     }
 }

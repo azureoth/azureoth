@@ -8,9 +8,10 @@ using Azureoth.Database;
 namespace Azureoth.Database.Migrations
 {
     [DbContext(typeof(AzureothDbContext))]
-    partial class AzureothDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170101172830_addingTables")]
+    partial class addingTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
