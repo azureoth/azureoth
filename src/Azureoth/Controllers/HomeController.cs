@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Azureoth.Database;
+using Azureoth.Management;
+using Microsoft.AspNetCore.Authorization;
+using Azureoth.Database.Models;
+using Azureoth.Datastructures;
+using System.Linq;
 
 namespace Azureoth.Controllers
 {
@@ -11,25 +12,26 @@ namespace Azureoth.Controllers
     {
         public HomeController(AzureothDbContext context) : base(context)
         {
+            ApplicationManager.SetContext(context);
         }
 
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var apps = ApplicationManager.GetUserApps(User.Identity.Name).OrderBy(a => a.Title);
+                return View(apps);
+            }
+
             return View();
         }
 
-        public IActionResult About()
+        [Authorize]
+        [HttpGet("home/app/{id}")]
+        public IActionResult App(string id)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            var app = ApplicationManager.GetUserApp(User.Identity.Name, id);
+            return View(app);
         }
 
         public IActionResult Error()

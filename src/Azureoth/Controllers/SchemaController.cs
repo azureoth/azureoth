@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Azureoth.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class SchemaController : BaseController
     {
         public SchemaController(AzureothDbContext context) : base(context)
@@ -28,6 +28,7 @@ namespace Azureoth.Controllers
 
         [Route("apps/{appId}/schema")]
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult PostSchema(string appId, [FromBody] Dictionary<string, JsonTable> schema)
         {
              return Ok(SchemaManager.AddSchema(User.Identity.Name, appId, schema));
@@ -39,9 +40,5 @@ namespace Azureoth.Controllers
         {
              return Ok(SchemaManager.UpdateSchema(User.Identity.Name, appId, schema));
         }
-
-
-
-
     }
 }

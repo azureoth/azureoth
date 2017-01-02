@@ -51,10 +51,12 @@ namespace Azureoth
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, AzureothDbContext db)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            db.Database.Migrate();
 
             if (env.IsDevelopment())
             {
@@ -87,6 +89,13 @@ namespace Azureoth
                     OnRemoteFailure = OnAuthenticationFailed,
                 }
             });
+
+            app.UseCors(builder =>
+                builder
+                    .WithOrigins("http://localhost:8100", "http://localhost:3000", "https://diwanschool.com")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
 
             app.UseRestfulDb();
 
