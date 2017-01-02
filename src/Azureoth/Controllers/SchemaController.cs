@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Azureoth.Management;
 using Azureoth.Modules.SQLdb.Datastructures.Schema;
 using Azureoth.Database;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Azureoth.Controllers
 {
+    [Authorize]
     public class SchemaController : BaseController
     {
         public SchemaController(AzureothDbContext context) : base(context)
@@ -18,44 +20,24 @@ namespace Azureoth.Controllers
 
         [Route("apps/{appId}/schema")]
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult GetSchema(string appId)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return Ok(SchemaManager.GetSchema(User.Identity.Name, appId));
-            }
-            else
-            {
-                return Unauthorized();
-            }
+            return Ok(SchemaManager.GetSchema(User.Identity.Name, appId));
         }
 
         [Route("apps/{appId}/schema")]
         [HttpPost]
         public ActionResult PostSchema(string appId, [FromBody] Dictionary<string, JsonTable> schema)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return Ok(SchemaManager.AddSchema(User.Identity.Name, appId, schema));
-            }
-            else
-            {
-                return Unauthorized();
-            }
+             return Ok(SchemaManager.AddSchema(User.Identity.Name, appId, schema));
         }
 
         [Route("apps/{appId}/schema")]
         [HttpPut]
         public ActionResult PutSchema(string appId, [FromBody] Dictionary<string, JsonTable> schema)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return Ok(SchemaManager.UpdateSchema(User.Identity.Name, appId, schema));
-            }
-            else
-            {
-                return Unauthorized();
-            }
+             return Ok(SchemaManager.UpdateSchema(User.Identity.Name, appId, schema));
         }
 
 

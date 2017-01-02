@@ -39,7 +39,7 @@ namespace Azureoth
 
             services.ConfigureRestfulDb(
                 connectionString: databaseConnectionString,   // Database connection string
-                apiPrefix: "/api/apps");                    // API path that the db will be exposed under
+                apiPrefix: "/api/db");                    // API path that the db will be exposed under
 
             services.AddMvc();
 
