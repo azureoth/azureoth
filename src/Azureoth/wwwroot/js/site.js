@@ -1,4 +1,5 @@
 ﻿(function () {
+    var jsEditor;
     $(document).ready(activate);
 
     function activate() {
@@ -11,6 +12,44 @@
             submitForm(this);
             return false;
         });
+
+        $('#submit-schema').click(function () {
+            var self = $(this),
+                success = $('.success'),
+                error = $('.error'),
+                appId = self.attr('data-app-id');
+
+            self.attr('disabled', 'disabled');
+            success.addClass('hidden');
+            error.addClass('hidden');
+
+            console.log(jsEditor.get());
+
+            $.ajax({
+                type: 'POST',
+                url: '/apps/' + appId + '/schema',
+                data: JSON.stringify(jsEditor.get()),
+                contentType: 'application/json'
+            }).done(function () {
+                success.removeClass('hidden');
+            }).fail(function () {
+                error.removeClass('hidden');
+            }).always(function () {
+                self.removeAttr('disabled');
+            });
+
+            return false;
+        });
+
+        var jsContainer = document.getElementById("jsoneditor");
+
+        if (jsContainer) {
+            var options = {
+                mode: 'text'
+            };
+
+            jsEditor = new JSONEditor(jsContainer, options);
+        }
     }
 
     function serializeForm(form) {

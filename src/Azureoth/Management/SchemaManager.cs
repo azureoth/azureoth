@@ -51,8 +51,8 @@ namespace Azureoth.Management
                 db.SchemasRepository.Create(newschema);
 
                 ISchemaBuilderFactory factory = new SchemaBuilderFactory();
-                var primaryConnectionString = "Server=(localdb)\\Azureoth;Database=AzureothProd;";
-                var secondaryConnectionString = "Server=(localdb)\\Azureoth;Database=AzureothStaging;";
+                var primaryConnectionString = "Server=(localdb)\\MSSQLLocalDB;Database=AzureothProd;";
+                var secondaryConnectionString = "Server=(localdb)\\MSSQLLocalDB;Database=AzureothStaging;";
                 var schemaBuilder = factory.CreateSchemaBuilder(primaryConnectionString, secondaryConnectionString, "D:/Logs/");
                 schemaBuilder.CreateSchema(schema, appName).GetAwaiter().GetResult();
 

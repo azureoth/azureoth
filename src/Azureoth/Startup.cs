@@ -90,6 +90,13 @@ namespace Azureoth
                 }
             });
 
+            app.UseCors(builder =>
+                builder
+                    .WithOrigins("http://localhost:8100", "http://localhost:3000", "https://diwanschool.com")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+
             app.UseRestfulDb();
 
             app.UseMvc(routes =>
