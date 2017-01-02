@@ -10,14 +10,7 @@ namespace Azureoth.Utility
     {
         public static void ValidateAppId(string AppId)
         {
-            if (string.IsNullOrEmpty(AppId))
-            {
-                throw new ArgumentException("Invalid AppId");
-            }
-            if (!AppId.All(char.IsLetterOrDigit))
-            {
-                throw new ArgumentException("Invalid AppId");
-            }
+            Guid.Parse(AppId);
         }
 
         public static void ValidateAppTitle(string AppName)

@@ -29,27 +29,33 @@ namespace Azureoth.Management
                 Dictionary<string, JsonTable> ret = JsonConvert.DeserializeObject<Dictionary<string, JsonTable>>(schema.Content);
 
                 return ret;
-                
+
             }
         }
         public static bool AddSchema(string userName, string appId, Dictionary<string, JsonTable> schema)
         {
             ParamValidators.ValidateAppId(appId);
-
-            SchemaBuilderFactory factory = new SchemaBuilderFactory();
-            var databaseConnectionString = "Data Source=(localdb)\\Azureoth;Initial Catalog=Azureoth;Integrated Security=False;MultipleActiveResultSets=True;App=EntityFramework";
-            var schemaBuilder = factory.CreateSchemaBuilder(databaseConnectionString, databaseConnectionString, "D:/Logs/");
-            schemaBuilder.CreateSchema(schema, appId).GetAwaiter().GetResult();
-
-            Guid toAdd = Guid.NewGuid();
             using (var db = new AzureothDbUnitOfWork(_context))
             {
+                if (db.SchemasRepository.GetAll(p => p.ApplicationId == Guid.Parse(appId)).Any())
+                    return false;
+                var appName = db.ApplicationsRepository.GetAll(a => a.Id == Guid.Parse(appId)).First().Title;
+
+                Guid toAdd = Guid.NewGuid();
+
                 Schema newschema = new Schema();
                 newschema.OwnerName = userName;
                 newschema.ApplicationId = Guid.Parse(appId);
                 newschema.Content = JsonConvert.SerializeObject(schema);
-                newschema.Version = db.SchemasRepository.GetNextSchemaVersionNumber(Guid.Parse(appId));
+                newschema.Version = 1;
                 db.SchemasRepository.Create(newschema);
+
+                ISchemaBuilderFactory factory = new SchemaBuilderFactory();
+                var primaryConnectionString = "Server=(localdb)\\Azureoth;Database=AzureothProd;";
+                var secondaryConnectionString = "Server=(localdb)\\Azureoth;Database=AzureothStaging;";
+                var schemaBuilder = factory.CreateSchemaBuilder(primaryConnectionString, secondaryConnectionString, "D:/Logs/");
+                schemaBuilder.CreateSchema(schema, appName).GetAwaiter().GetResult();
+
                 db.Save();
             }
 
@@ -57,18 +63,32 @@ namespace Azureoth.Management
         }
         public static bool UpdateSchema(string userName, string appId, Dictionary<string, JsonTable> schema)
         {
-            throw new NotImplementedException();
-            ParamValidators.ValidateAppId(appId);
-            //getid?
-            Guid toAdd = Guid.NewGuid();
+             ParamValidators.ValidateAppId(appId);
             using (var db = new AzureothDbUnitOfWork(_context))
             {
+                if (db.SchemasRepository.GetAll(p => p.ApplicationId == Guid.Parse(appId)).Any())
+                    return false;
+                var app = db.ApplicationsRepository.GetAll(a => a.Id == Guid.Parse(appId)).First();
+
+                Guid toAdd = Guid.NewGuid();
+
+                Schema oldSchema = db.SchemasRepository.GetAppSchema(Guid.Parse(appId));
+
                 Schema newschema = new Schema();
                 newschema.OwnerName = userName;
                 newschema.ApplicationId = Guid.Parse(appId);
                 newschema.Content = JsonConvert.SerializeObject(schema);
                 newschema.Version = db.SchemasRepository.GetNextSchemaVersionNumber(Guid.Parse(appId));
-                db.SchemasRepository.Update(newschema);
+                db.SchemasRepository.Create(newschema);
+
+
+                ISchemaBuilderFactory factory = new SchemaBuilderFactory();
+                var primaryConnectionString = "Server=(localdb)\\Azureoth;Database=AzureothProd;";
+                var secondaryConnectionString = "Server=(localdb)\\Azureoth;Database=AzureothStaging;";
+                var schemaBuilder = factory.CreateSchemaBuilder(primaryConnectionString, secondaryConnectionString, "D:/Logs/");
+                schemaBuilder.UpdateSchema(JsonConvert.DeserializeObject<Dictionary<string, JsonTable>> (oldSchema.Content),
+                    schema, app.Title).GetAwaiter().GetResult();
+
                 db.Save();
             }
 

@@ -38,7 +38,7 @@ namespace Azureoth
             services.AddDbContext<AzureothDbContext>(options => options.UseSqlServer(databaseConnectionString));
 
             services.ConfigureRestfulDb(
-                connectionString: databaseConnectionString,   // Database connection string
+                connectionString: Configuration.GetConnectionString("ProdDatabaseConnectionString"),   // Database connection string
                 apiPrefix: "/api/db");                    // API path that the db will be exposed under
 
             services.AddMvc();
